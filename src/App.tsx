@@ -11,7 +11,10 @@ function App() {
   )
 
   return (
-    <div className='max-w-[700px] my-0 mx-auto'>
+    <div className='max-w-[900px] my-0 mx-auto bg-red-200 flex flex-col items-center'>
+      <div>
+        <p className='text-lg m-5'>Lose/Win</p>
+      </div>
       <HangmanSketch />
       <WordToGuess />
       <Keyboard />
