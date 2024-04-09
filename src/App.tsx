@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import words from './wordsList.json'
+import words from './DATA/wordsList.json'
 import { getRandomNumberFromWordsList } from './helperFunctions/getRandomNumberFromWordsList'
 import HangmanSketch from './components/HangmanSketch'
 import Keyboard from './components/Keyboard'
 import WordToGuess from './components/WordToGuess'
+import React from 'react'
 
 function App() {
   const [wordToGuess, setWordToGuess] = useState<string>(
@@ -13,11 +14,13 @@ function App() {
   return (
     <div className='max-w-[900px] my-0 mx-auto bg-red-200 flex flex-col items-center'>
       <div>
-        <p className='text-lg m-5'>Lose/Win</p>
+        <p className='text-lg m-5 text-center'>Lose/Win</p>
       </div>
       <HangmanSketch />
       <WordToGuess />
-      <Keyboard />
+      <div className='self-stretch'>
+        <Keyboard />
+      </div>
     </div>
   )
 }

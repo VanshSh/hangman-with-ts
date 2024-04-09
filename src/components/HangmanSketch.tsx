@@ -1,3 +1,5 @@
+import React from 'react'
+
 const HEAD = (
   <div className='w-[50px] h-[50px] rounded-full border-[5px] border-red-600 absolute top-[50px] right-[-20px]' />
 )
