@@ -1,0 +1,19 @@
+.activeButton{
+    background: red;
+    color: wheat;
+}
+
+.inactiveButton{
+    opacity: 0.3;
+    cursor: no-drop;
+}
+
+.button:hover:not(:disabled){
+    background: blue ;
+    color: wheat;
+}
+
+.button:focus{
+    background-color: rgb(131, 131, 237);
+    color: wheat;
+}

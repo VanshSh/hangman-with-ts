@@ -1,13 +1,12 @@
-import React from 'react'
 import getRandomUUIDNumber from '../helperFunctions/getRandomUUIDNumber'
-
-const WordToGuess = () => {
-  const word = 'TEST'
-  const guessedWord = ['t', 'e']
-
+type WordToGuessProps = {
+  guessedLetters: string[]
+  wordToGuess: string
+}
+const WordToGuess = ({ guessedLetters, wordToGuess }: WordToGuessProps) => {
   return (
     <div className='flex gap-2 text-6xl font-bold uppercase font-mono '>
-      {word
+      {wordToGuess
         .trim()
         .split('')
         .map((letter) => {
@@ -19,7 +18,7 @@ const WordToGuess = () => {
             >
               <span
                 className={
-                  guessedWord.includes(letter.toLowerCase())
+                  guessedLetters.includes(letter.toLowerCase())
                     ? 'visible'
                     : 'invisible'
                 }

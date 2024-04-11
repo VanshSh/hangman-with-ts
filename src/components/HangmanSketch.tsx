@@ -1,5 +1,3 @@
-import React from 'react'
-
 const HEAD = (
   <div className='w-[50px] h-[50px] rounded-full border-[5px] border-red-600 absolute top-[50px] right-[-20px]' />
 )
@@ -22,17 +20,17 @@ const RIGHT_LEG = (
   <div className='w-[100px] h-[5px] bg-red-600 absolute top-[195px] right-[-100px] rotate-[36deg] origin-top-left' />
 )
 
+const BODY_PARTS = [HEAD, BODY, RIGHT_ARM, LEFT_ARM, RIGHT_LEG, LEFT_LEG]
+type HangManSketchProps = {
+  numberOfGuesses: number
+}
+
 const BASE = <div className='w-[250px] bg-red-600 h-[10px] ' />
 const POLE = <div className='h-[400px] w-[10px] bg-red-600 ml-[120px]' />
-const HangmanSketch = () => {
+const HangmanSketch = ({ numberOfGuesses }: HangManSketchProps) => {
   return (
     <div className='relative'>
-      {HEAD}
-      {BODY}
-      {RIGHT_ARM}
-      {LEFT_ARM}
-      {RIGHT_LEG}
-      {LEFT_LEG}
+      {BODY_PARTS.slice(0, numberOfGuesses)}
       <div className='h-[50px] w-[10px] bg-red-600 absolute top-0 right-0' />
       <div className='h-[10px] w-[200px] bg-red-600 ml-[120px]' />
       {POLE}
