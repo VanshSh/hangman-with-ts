@@ -1,5 +1,5 @@
 .activeButton{
-    background: red;
+    background-color: red !important;
     color: wheat;
 }
 

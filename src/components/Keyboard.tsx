@@ -1,7 +1,15 @@
 import keys from '../DATA/keyboardAlphabet.json'
 import styles from '../CSSModule/keyboard.module.css'
-
-const Keyboard = () => {
+type KeyboardProps = {
+  activeLetter: string[]
+  inactiveLetters: string[]
+  addGuessedLetter: (letter: string) => void
+}
+const Keyboard = ({
+  activeLetter,
+  inactiveLetters,
+  addGuessedLetter,
+}: KeyboardProps) => {
   return (
     <div
       style={{
@@ -12,9 +20,17 @@ const Keyboard = () => {
       }}
     >
       {keys.map((key) => {
+        const isActive = activeLetter.includes(key)
+        const isInActive = inactiveLetters.includes(key)
         return (
           <button
-            className={`bg-slate-400 uppercase border-black cursor-pointer border-2 p-1 font-bold text-lg   ${styles.button}  `}
+            disabled={isInActive ? true : false}
+            onClick={() => addGuessedLetter(key)}
+            className={`bg-slate-400 uppercase border-black cursor-pointer border-2 p-1 font-bold text-lg   ${
+              styles.button
+            }
+            ${isActive ? styles.activeButton : ''}
+              ${isInActive ? styles.inactiveButton : ''}  `}
             key={key}
           >
             {key.toUpperCase()}

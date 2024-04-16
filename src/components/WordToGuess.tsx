@@ -14,14 +14,14 @@ const WordToGuess = ({ guessedLetters, wordToGuess }: WordToGuessProps) => {
           return (
             <span
               key={randomUUID}
-              className=' border-solid border-red-800 border-b-4'
+              className=' border-solid  border-red-800 border-b-4'
             >
               <span
-                className={
+                className={`${
                   guessedLetters.includes(letter.toLowerCase())
                     ? 'visible'
                     : 'invisible'
-                }
+                } `}
               >
                 {letter}
               </span>

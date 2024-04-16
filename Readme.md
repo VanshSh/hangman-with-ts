@@ -1,7 +1,7 @@
 - Festures to add
   - Dark / Light Mode => https://uiverse.io/
   - Confettie
-  - replace all index key with getRandomUUIDNumber()
+  - Timer  
   
 
 - Color Theme of the App
