@@ -14,12 +14,16 @@ function App() {
     (word) => !wordToGuess.includes(word)
   )
 
+  const isLoser = incorrectLetters.length >= 6
+  const isWinner = wordToGuess
+    .split('')
+    .every((letter) => guessedLetter.includes(letter))
   const addGuessedLetter = useCallback(
     (key: string) => {
-      if (guessedLetter.includes(key)) return
+      if (guessedLetter.includes(key) || isWinner || isLoser) return
       setGuessedLetters((prevLetter) => [...prevLetter, key])
     },
-    [guessedLetter]
+    [guessedLetter, isLoser, isWinner]
   )
 
   useEffect(() => {
@@ -38,12 +42,19 @@ function App() {
   return (
     <div className='max-w-[900px] my-0 mx-auto bg-red-200 flex flex-col items-center'>
       <div>
-        <p className='text-lg m-5 text-center'>Lose/Win</p>
+        <p className='text-lg m-5 text-center'></p>
+        {isWinner && 'Winner refresh and try new word'}
+        {isLoser && 'Loser refresh and try new word'}
       </div>
       <HangmanSketch numberOfGuesses={incorrectLetters.length} />
-      <WordToGuess guessedLetters={guessedLetter} wordToGuess={wordToGuess} />
+      <WordToGuess
+        reveal={isLoser}
+        guessedLetters={guessedLetter}
+        wordToGuess={wordToGuess}
+      />
       <div className='self-stretch'>
         <Keyboard
+          disabled={isWinner || isLoser}
           activeLetter={guessedLetter.filter((letter) =>
             wordToGuess.includes(letter)
           )}

@@ -2,8 +2,13 @@ import getRandomUUIDNumber from '../helperFunctions/getRandomUUIDNumber'
 type WordToGuessProps = {
   guessedLetters: string[]
   wordToGuess: string
+  reveal?: boolean
 }
-const WordToGuess = ({ guessedLetters, wordToGuess }: WordToGuessProps) => {
+const WordToGuess = ({
+  guessedLetters,
+  wordToGuess,
+  reveal = false,
+}: WordToGuessProps) => {
   return (
     <div className='flex gap-2 text-6xl font-bold uppercase font-mono '>
       {wordToGuess
@@ -18,10 +23,14 @@ const WordToGuess = ({ guessedLetters, wordToGuess }: WordToGuessProps) => {
             >
               <span
                 className={`${
-                  guessedLetters.includes(letter.toLowerCase())
+                  guessedLetters.includes(letter.toLowerCase()) || reveal
                     ? 'visible'
                     : 'invisible'
-                } `}
+                } ${
+                  !guessedLetters.includes(letter.toLowerCase()) && reveal
+                    ? 'text-red-500'
+                    : 'text-green-500'
+                }`}
               >
                 {letter}
               </span>
