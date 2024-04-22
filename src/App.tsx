@@ -4,6 +4,7 @@ import { getRandomNumberFromWordsList } from './helperFunctions/getRandomNumberF
 import HangmanSketch from './components/HangmanSketch'
 import Keyboard from './components/Keyboard'
 import WordToGuess from './components/WordToGuess'
+import LightDarkMode from './components/LightDarkMode'
 
 function App() {
   const [wordToGuess, setWordToGuess] = useState<string>(
@@ -40,27 +41,30 @@ function App() {
   }, [guessedLetter])
 
   return (
-    <div className='max-w-[900px] my-0 mx-auto bg-red-200 flex flex-col items-center'>
-      <div>
-        <p className='text-lg m-5 text-center'></p>
-        {isWinner && 'Winner refresh and try new word'}
-        {isLoser && 'Loser refresh and try new word'}
-      </div>
-      <HangmanSketch numberOfGuesses={incorrectLetters.length} />
-      <WordToGuess
-        reveal={isLoser}
-        guessedLetters={guessedLetter}
-        wordToGuess={wordToGuess}
-      />
-      <div className='self-stretch'>
-        <Keyboard
-          disabled={isWinner || isLoser}
-          activeLetter={guessedLetter.filter((letter) =>
-            wordToGuess.includes(letter)
-          )}
-          inactiveLetters={incorrectLetters}
-          addGuessedLetter={addGuessedLetter}
+    <div>
+      <LightDarkMode />
+      <div className='max-w-[900px] my-0 mx-auto bg-red-200 flex flex-col items-center'>
+        <div>
+          <p className='text-lg m-5 text-center'></p>
+          {isWinner && 'Winner refresh and try new word'}
+          {isLoser && 'Loser refresh and try new word'}
+        </div>
+        <HangmanSketch numberOfGuesses={incorrectLetters.length} />
+        <WordToGuess
+          reveal={isLoser}
+          guessedLetters={guessedLetter}
+          wordToGuess={wordToGuess}
         />
+        <div className='self-stretch'>
+          <Keyboard
+            disabled={isWinner || isLoser}
+            activeLetter={guessedLetter.filter((letter) =>
+              wordToGuess.includes(letter)
+            )}
+            inactiveLetters={incorrectLetters}
+            addGuessedLetter={addGuessedLetter}
+          />
+        </div>
       </div>
     </div>
   )

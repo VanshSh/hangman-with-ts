@@ -1,12 +1,13 @@
 - Festures to add
   - Dark / Light Mode => https://uiverse.io/
   - Confettie
-  - Timer  
+ 
   
 
 - Color Theme of the App
-  - https://coolors.co/fff07c-80ff72-7ee8fa-eec0c6-e58c8a
+  - https://coolors.co/270722-ecce8e-dbcf96-c2c6a7-9ac2c5
 
 - Documentation
   - Proper documentation in Readme
   - Take inspiration from old projects
+  - Add it in Readme Github Profile
